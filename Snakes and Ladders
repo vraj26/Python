@@ -1,0 +1,85 @@
+
+import random
+
+game = True
+
+while game:
+  play = input(" Do you want to play this exciting game [Yes or no]: ")
+  
+  while True:
+    
+    if play == 'yes':
+      break
+      
+    
+    elif play == 'no':
+      print("Ok, have a nice and lovely day... Bye!!")
+      game = False
+      break
+
+    else:
+      play = input("\n I don't comprehend with your statement, please input a valid input: ")
+
+  if game == False:
+    break
+  
+  snakes = {
+  54 : 19, 
+  90 : 48, 
+  99 : 77
+  }
+
+  ladders = {
+  9 : 34, 
+  40 : 64, 
+  67 : 86
+  } 
+
+  user = input("Welcome to Snakes and Ladders, the unique board game... what is your name: ")
+  print (      )
+  print("Hello", user)
+
+  user_squ = 1
+  computer_squ = 1
+
+ 
+  while user_squ < 100 and computer_squ < 100:
+    user_dice_1 = random.randint(1, 6)
+    user_dices_2 = random.randint(1, 6)
+    comp_dice_1 = random.randint(1, 6)
+    comp_dices_2 = random.randint(1, 6)
+    user_throw = user_dice_1 + user_dices_2
+    comp_throw = comp_dice_1 = comp_dices_2
+    user_squ = user_throw + user_squ
+    computer_squ = comp_throw + computer_squ
+
+    if user_squ > 100:
+      user_squ = 100
+  
+    if computer_squ > 100:
+      computer_squ = 100
+
+    print (f"\n{user} played a {user_throw} and is at {user_squ}")
+    print (f"the computer played a {comp_throw} and is at {computer_squ}")
+
+    if user_squ in snakes:
+      print (f"{user} has been on an encounter with a snake, and has moved down to {snakes[user_squ]}")
+      user_squ = snakes[user_squ]
+
+    if user_squ in ladders:
+      print (f"{user} has found a mysetrious ladder and decides to take it, and has moved up to {ladders[user_squ]}")
+
+    if user_squ == 100:
+      print("\nGood job", user + " you won this game of Snakes & Ladders")
+
+    if computer_squ == 100:
+      print(f"\nThe computer wins, sorry {user}, Have a nice and lovely day")
+ 
+    if computer_squ in snakes:
+      print(f"The computer has met [user] who has a snake, the computer trys to fight the snake and now has lost, and has moved down to {snakes[computer_squ]}")
+      
+ 
+    if computer_squ in ladders:
+      print (f"The computer has seen a Ladder and decides to take it, and has moved up to {ladders[computer_squ]}")
+      
+    
